@@ -1,0 +1,18 @@
+{
+  "name": "clientmate",
+  "owner": { "name": "3Flux", "email": "max.oliver@3flux.com" },
+  "metadata": {
+    "description": "ClientMate — design-partner & early-customer toolkit for Claude Code",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "clientmate",
+      "source": "./",
+      "description": "Build a target account list, detect bad-fit pilots, score account fit, audit partner value, draft buyer outreach, and prep discovery calls.",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": ["startup", "sales", "design-partner", "customer", "gtm"]
+    }
+  ]
+}
