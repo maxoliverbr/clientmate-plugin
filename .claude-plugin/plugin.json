@@ -1,8 +1,12 @@
 {
   "name": "clientmate",
+  "version": "1.0.0",
   "description": "Design-partner and early-customer toolkit: build a target account list, detect bad-fit pilots, score account fit, audit partner value, draft buyer outreach, and prep discovery calls",
   "author": {
     "name": "3Flux",
     "email": "max.oliver@3flux.com"
-  }
+  },
+  "repository": "https://github.com/maxoliverbr/clientmate-plugin",
+  "license": "MIT",
+  "homepage": "https://github.com/maxoliverbr/clientmate-plugin"
 }
