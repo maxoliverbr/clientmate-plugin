@@ -60,45 +60,15 @@ Run commands in this order to build and qualify your design-partner pipeline:
 
 ## Installation
 
-These commands install as the `clientmate` Claude Code plugin (works in any project directory).
+ClientMate is listed in Anthropic's official Claude plugin directory, available in Claude Code, Cowork, and the Claude apps (web, desktop, mobile).
 
-**1. Clone the plugin:**
+**Claude Code** — run `/plugin`, go to **Discover**, search for **ClientMate**, and install it. Then run `/reload-plugins` (or restart Claude Code).
 
-```
-git clone https://github.com/maxoliverbr/clientmate-plugin.git ~/dev/clientmate
-```
+**Cowork and the Claude apps** — open the plugin directory, search for **ClientMate**, and install it.
 
-**2. Run the install script:**
+> **Command names:** plugin skills are namespaced, so `/cmstrat` is invoked as `/clientmate:cmstrat` (type `/clientmate:` and let autocomplete list them). The short names are used throughout this README for readability.
 
-```
-cd ~/dev/clientmate && bash install.sh
-```
-
-The script registers the plugin in `~/.claude/plugins/installed_plugins.json` and enables it in `~/.claude/settings.json`. It is idempotent — safe to re-run after updates.
-
-**3. Restart Claude Code.** All `/cm*` commands become available in any directory that contains a `STARTUP_PROFILE.md`.
-
-**Manual installation**
-
-Register in `~/.claude/plugins/installed_plugins.json`:
-
-```
-"clientmate@local": [{
-  "scope": "user",
-  "installPath": "/home/<you>/dev/clientmate",
-  "version": "1.0.0",
-  "installedAt": "<ISO timestamp>",
-  "lastUpdated": "<ISO timestamp>"
-}]
-```
-
-Enable in `~/.claude/settings.json`:
-
-```
-"enabledPlugins": {
-  "clientmate@local": true
-}
-```
+All commands work in any directory that contains a `STARTUP_PROFILE.md`.
 
 ---
 
@@ -139,7 +109,6 @@ A burned-before enterprise VP asks the 10 hardest deal-ending questions — vend
 - **Never sign a pilot without a written success definition and a conversion path.** Every skill in this toolkit enforces this; it's the single most common early-stage trap.
 - **Weight design-partner value, not just contract size.** `/cmvalue` exists because the best partner often pays little and teaches a lot.
 - **A fast, polite no is a win.** `/cmprep`'s disqualify triggers are there to save your runway, not to close every deal.
-- **Update the plugin with new skills** by adding `SKILL.md` files to `skills/<name>/` and re-running `install.sh`.
 
 ---
 
@@ -150,7 +119,7 @@ ClientMate is a set of prompt-based skills. It has no server, no telemetry, no a
 - **Local files:** skills read your `STARTUP_PROFILE.md` and write `.md` reports to your working directory (`/cmstrat` also lists local files to find existing reports). Nothing leaves your machine except through Claude Code itself.
 - **Claude:** the content you work with is processed by Claude under your Anthropic account terms ([Anthropic Privacy Policy](https://www.anthropic.com/legal/privacy)).
 - **Web research:** `/cmlist`, `/cmmatch`, `/cmposer` and `/cmvalue` use Claude Code's WebSearch and WebFetch tools. Search queries (company and account names, buyer roles, sector and geography terms) go to the search provider, and public company sites, news and job posts are fetched. Your full profile is never sent to third-party sites.
-- **Install:** `install.sh` only clones this repository from GitHub and edits your local Claude Code settings.
+- **Install:** the plugin is installed through Claude's official plugin marketplace; nothing else is downloaded or run.
 
 Questions: max.oliver@3flux.com
 
