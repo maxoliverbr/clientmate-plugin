@@ -62,7 +62,11 @@ Run commands in this order to build and qualify your design-partner pipeline:
 
 ClientMate is listed in Anthropic's official Claude plugin directory, available in Claude Code, Cowork, and the Claude apps (web, desktop, mobile).
 
-**Claude Code** — run `/plugin`, go to **Discover**, search for **ClientMate**, and install it. Then run `/reload-plugins` (or restart Claude Code).
+**Claude Code** — run `/plugin`, go to **Discover**, search for **ClientMate**, and install it. Then run `/reload-plugins` (or restart Claude Code). On Claude Code 2.1.275 or later you can also install it in one step:
+
+```
+/plugin install clientmate --marketplace maxoliverbr/clientmate-plugin
+```
 
 **Cowork and the Claude apps** — open the plugin directory, search for **ClientMate**, and install it.
 
