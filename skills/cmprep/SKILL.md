@@ -2,7 +2,7 @@
 name: cmprep
 description: "Prepare for a design-partner / early-customer discovery call from the active startup profile and a cmmatch report. Usage: /cmprep <cmmatch-report.md>. Produces complete call prep: a timed agenda, the qualifying questions that confirm pain/budget/authority/timeline, the value story, preemptive answers to their likely objections, the deal shape and ask, and the disqualify triggers that tell you to walk. Saves to cmprep-<account>.md."
 license: MIT
-allowed-tools: Read Write
+allowed-tools: Read Grep Glob LS
 metadata:
   author: 3Flux
   version: "1.0"

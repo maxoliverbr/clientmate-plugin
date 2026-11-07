@@ -2,7 +2,7 @@
 name: cmdevil
 description: "Stress-test your sales pitch with the 10 hardest buyer questions. Usage: /cmdevil. Reads STARTUP_PROFILE.md (and any cmmatch-*.md) and produces a brutal interrogation from a jaded enterprise buyer who has been burned by startups before: each question, why it kills the deal, and what a real answer looks like. Saves to cmdevil.md."
 license: MIT
-allowed-tools: Read Write
+allowed-tools: Read Grep Glob LS
 metadata:
   author: 3Flux
   version: "1.0"

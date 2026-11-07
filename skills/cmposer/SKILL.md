@@ -3,7 +3,7 @@ name: cmposer
 description: "Detect early customers and design partners that will burn you: tire-kickers with no real pain, champions with no budget authority, roadmap hijackers, free-pilot-forever logos, vanity names that never convert, and counterparties who squeeze or ghost early-stage vendors. Usage: /cmposer <Account Name>. Runs 8 evidence-based checks, scores a Fit Score (0–100), and recommends whether to pursue. Saves to cmposer-<account>.md."
 license: MIT
 compatibility: Requires Claude Code with WebSearch and WebFetch. Internet connection required.
-allowed-tools: WebSearch WebFetch Read Write
+allowed-tools: Read Grep Glob LS
 metadata:
   author: 3Flux
   version: "1.0"

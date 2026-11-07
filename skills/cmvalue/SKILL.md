@@ -3,7 +3,7 @@ name: cmvalue
 description: "Audit the full value a design partner or early customer delivers beyond the contract value — reference economics and expansion, but also data access, domain expertise, co-development, distribution, and brand signal — scored by relevance to the active startup and netted against the cost to serve them (support burden, customization, discounts, founder time). Usage: /cmvalue <Account Name>. Saves to cmvalue-<account>.md."
 license: MIT
 compatibility: Requires Claude Code with WebSearch and WebFetch. Internet connection required.
-allowed-tools: WebSearch WebFetch Read Write
+allowed-tools: Read Grep Glob LS
 metadata:
   author: 3Flux
   version: "1.0"

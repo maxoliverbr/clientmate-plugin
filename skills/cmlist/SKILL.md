@@ -3,7 +3,7 @@ name: cmlist
 description: "Build a prioritized target account list of candidate design partners and early customers from the active startup profile. Usage: /cmlist. Reads STARTUP_PROFILE.md, researches the beachhead segment, and produces a tiered list of 15–25 accounts ranked by fit with rationale, the likely champion, and a suggested entry angle. Saves to cmlist.md."
 license: MIT
 compatibility: Requires Claude Code with WebSearch and WebFetch. Internet connection required.
-allowed-tools: WebSearch WebFetch Read Write
+allowed-tools: Read Grep Glob LS
 metadata:
   author: 3Flux
   version: "1.0"

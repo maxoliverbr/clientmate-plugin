@@ -3,7 +3,7 @@ name: cmmatch
 description: "Match the active startup against a single candidate account as a design partner or early customer. Usage: /cmmatch <Account Name>. Reads STARTUP_PROFILE.md, researches the account, and produces a structured Account Fit Report with 7-dimension fit scoring summing to /100, the champion map, the deal shape to propose, the path in, and a clear Pursue / Nurture / Pass recommendation. Saves to cmmatch-<account>.md."
 license: MIT
 compatibility: Requires Claude Code with WebSearch and WebFetch. Internet connection required.
-allowed-tools: WebSearch WebFetch Read Write
+allowed-tools: Read Grep Glob LS
 metadata:
   author: 3Flux
   version: "1.0"

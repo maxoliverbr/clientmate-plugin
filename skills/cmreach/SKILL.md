@@ -2,7 +2,7 @@
 name: cmreach
 description: "Draft design-partner / early-customer outreach from a cmmatch report. Usage: /cmreach <cmmatch-report.md>. Reads STARTUP_PROFILE.md and the cmmatch report, then produces three outreach variants aimed at the champion: a cold email, a warm intro request, and a LinkedIn DM — each with a low-friction first ask (a discovery call, not a contract). Saves to cmreach-<account>.md."
 license: MIT
-allowed-tools: Read Write
+allowed-tools: Read Grep Glob LS
 metadata:
   author: 3Flux
   version: "1.0"

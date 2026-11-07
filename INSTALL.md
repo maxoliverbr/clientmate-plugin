@@ -74,16 +74,6 @@ Loads the plugin(s) for one session only — good for trying them before committ
 claude --plugin-dir ~/dev/incubae-plugin --plugin-dir ~/dev/clientmate-plugin
 ```
 
-### Method C — Bundled script (what the plugins were built with)
-
-Each plugin includes an idempotent `install.sh` that registers it directly in your
-`~/.claude` config:
-```bash
-cd ~/dev/incubae-plugin    && bash install.sh
-cd ~/dev/clientmate-plugin && bash install.sh
-```
-Then restart Claude Code (or run `/reload-plugins`).
-
 ---
 
 ## Step 3 — Verify

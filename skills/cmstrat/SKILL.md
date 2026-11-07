@@ -2,7 +2,7 @@
 name: cmstrat
 description: "Define your ideal design-partner and early-customer strategy before you chase logos. Usage: /cmstrat. Reads STARTUP_PROFILE.md and any cmlist.md or cmmatch-*.md files, then produces an honest go-to-market strategy: a sharp Ideal Design Partner Profile and Ideal Customer Profile, how many to sign and in what sequence, what to ask each for (LOI / paid pilot / design-partner agreement), the anti-patterns to refuse, and this week's next actions. Saves to cmstrat.md."
 license: MIT
-allowed-tools: Read Write Bash(find:*) Bash(ls:*)
+allowed-tools: Read Grep Glob LS
 metadata:
   author: 3Flux
   version: "1.0"
