@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClientMate — Design-Partner & Early-Customer Toolkit</title>
+<meta name="description" content="Claude Code skills that find the right design partners and early customers — and filter out the bad fits that quietly kill startups.">
+<meta property="og:title" content="ClientMate — the bad-fit filter">
+<meta property="og:description" content="Find signal. Filter bad fits. Protect your runway.">
+<meta property="og:image" content="clientmate-logo.png">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050806; --panel:#0a100b;
+  --green:#8cf21a; --cyan:#22d3ee; --pink:#ff4d9d; --text:#e8efe6; --dim:#8a9a86;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);
+  font:18px/1.6 "JetBrains Mono",ui-monospace,monospace;
+  background-image:radial-gradient(rgba(140,242,26,.07) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+/* scanlines */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px)}
+a{color:var(--cyan)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.frame{border:2px solid var(--green);margin:16px auto;border-radius:6px;box-shadow:0 0 28px rgba(140,242,26,.12)}
+.bar{display:flex;justify-content:space-between;gap:12px;padding:10px 16px;border-bottom:1px dashed var(--green);
+  font-size:15px;color:var(--green)}
+.bar span{color:var(--cyan)} .bar b{color:var(--dim);letter-spacing:6px;font-weight:400}
+.cursor::after{content:"▍";animation:blink 1s steps(2) infinite;color:var(--green)}
+@keyframes blink{50%{opacity:0}}
+section{padding:56px 24px}
+.hero{display:grid;grid-template-columns:1fr;gap:24px;text-align:center;padding-top:40px}
+h1{font:clamp(30px,8vw,76px)/1.1 "Press Start 2P",monospace;color:var(--green);
+  text-shadow:3px 3px 0 #2d4d06,0 0 24px rgba(140,242,26,.45);letter-spacing:2px;word-break:break-word}
+.sub{font:clamp(22px,4vw,34px) "VT323",monospace;color:var(--cyan);letter-spacing:1px}
+.rule{color:var(--cyan);overflow:hidden;white-space:nowrap;opacity:.7}
+.rule i{color:var(--pink);font-style:normal}
+.lead{max-width:680px;margin:0 auto;color:var(--text)}
+.pk{color:var(--pink)} .cy{color:var(--cyan)} .gr{color:var(--green)}
+.hero img{width:min(640px,100%);margin:8px auto 0;border:2px solid var(--green);border-radius:6px;image-rendering:pixelated}
+.banner{display:inline-block;margin:8px auto;padding:12px 28px;border:2px solid var(--green);
+  font:20px "VT323",monospace;font-size:clamp(20px,3.4vw,28px);color:var(--green);letter-spacing:2px}
+.banner i{color:var(--pink);font-style:normal}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.btn{font:700 15px "JetBrains Mono",monospace;text-decoration:none;padding:12px 20px;border:2px solid var(--green);
+  color:var(--bg);background:var(--green);border-radius:4px;transition:.15s}
+.btn:hover{box-shadow:0 0 18px var(--green);transform:translateY(-2px)}
+.btn.alt{background:transparent;color:var(--green)}
+.btn.pk{background:transparent;border-color:var(--pink);color:var(--pink)}
+.btn.pk:hover{box-shadow:0 0 18px var(--pink)}
+h2{font:clamp(14px,2.6vw,20px) "Press Start 2P",monospace;color:var(--green);margin-bottom:28px;line-height:1.6}
+h2::before{content:"> ";color:var(--pink)}
+.grid{display:grid;gap:16px}
+.g5{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{border:2px dashed var(--green);border-radius:6px;padding:18px;background:var(--panel);transition:.15s}
+.card:hover{border-style:solid;transform:translateY(-3px);box-shadow:0 0 18px rgba(140,242,26,.2)}
+.card.bad{text-align:center;border-color:var(--pink);font:20px "VT323",monospace;letter-spacing:1px}
+.card.bad:hover{box-shadow:0 0 18px rgba(255,77,157,.3)}
+.card.bad em{display:block;font:normal 38px/1.2 "VT323",monospace;color:var(--pink)}
+.card .cmd{font:700 17px "JetBrains Mono",monospace;color:var(--cyan);margin-bottom:6px}
+.card p{font-size:15px;color:var(--dim)}
+.card .out{display:block;margin-top:10px;font-size:13px;color:var(--green)}
+.steps{list-style:none;counter-reset:s;display:grid;gap:10px}
+.steps li{counter-increment:s;border-left:3px solid var(--green);padding:6px 0 6px 16px;font-size:16px}
+.steps li::before{content:"[" counter(s) "] ";color:var(--pink)}
+.steps code{color:var(--cyan)} .steps span{color:var(--dim)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.term{border:2px solid var(--green);border-radius:6px;padding:18px;background:var(--panel)}
+.term h3{font:18px "VT323",monospace;font-size:22px;color:var(--green);margin-bottom:10px}
+.term li{list-style:none;font-size:16px;padding:2px 0}
+.term li::before{content:"[✓] ";color:var(--green)}
+.result{border-color:var(--pink)}
+.result h3{color:var(--pink)}
+.result .stars{color:var(--green);font-size:26px;letter-spacing:4px}
+.result li::before{content:none}
+.tag{display:inline-block;padding:0 8px;background:var(--green);color:var(--bg);font-weight:700}
+.verdicts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:20px}
+.v{border:2px solid;padding:12px;text-align:center;border-radius:4px;font-size:14px}
+.v b{display:block;font:26px "VT323",monospace}
+.v.a{color:var(--green)} .v.b{color:var(--cyan)} .v.c{color:#ffd23f} .v.d{color:var(--pink)}
+pre{background:#000;border:1px solid var(--green);border-radius:4px;padding:14px;overflow-x:auto;font-size:15px;color:var(--green)}
+pre .c{color:var(--dim)} pre .p{color:var(--cyan)}
+.pillars{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 28px;font:24px "VT323",monospace;color:var(--green);letter-spacing:2px}
+.pillars i{color:var(--pink);font-style:normal}
+footer{padding:28px 24px;text-align:center;border-top:1px dashed var(--green);color:var(--green);font-size:14px;letter-spacing:2px}
+footer a{color:var(--cyan)}
+@media(max-width:560px){section{padding:40px 16px} .bar b{display:none} body{font-size:16px}}
+@media(prefers-reduced-motion:reduce){.cursor::after{animation:none}*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="frame">
+  <div class="bar"><div>clientmate@founder:~$ <span>// filter bad fits. find the right customers</span> <i style="color:var(--pink);font-style:normal">&lt;3</i></div><b>_ ▢ ✕</b></div>
+
+  <section class="hero">
+    <h1>CLIENTMATE</h1>
+    <div class="sub">Design-Partner &amp; Early-Customer Toolkit</div>
+    <div class="rule">---------------------------- <i>♥</i> ----------------------------</div>
+    <p class="lead">A set of <span class="pk">Claude Code Skills</span> that turn your startup profile into a disciplined go-to-market motion for finding the right design partners and early customers — while screening out <span class="pk">bad-fit</span> customers that quietly kill startups.</p>
+    <div><div class="banner"><i>♥</i> CLIENTMATE IS THE BAD-FIT FILTER. <i>♥</i></div></div>
+    <div class="cta">
+      <a class="btn" href="#install">&gt; INSTALL</a>
+      <a class="btn alt" href="#commands">&gt; SEE THE COMMANDS</a>
+      <a class="btn pk" href="https://github.com/maxoliverbr/clientmate-plugin">&lt;/&gt; GITHUB</a>
+    </div>
+    <img src="clientmate-logo.png" alt="ClientMate: a smiling magnet pulling in good-fit customers, with tire-kickers, vanity logos and other bad fits screened out" width="640" height="640">
+  </section>
+
+  <section>
+    <h2>THE WRONG CUSTOMER IS AS DANGEROUS AS NO CUSTOMER</h2>
+    <div class="grid g5">
+      <div class="card bad"><em>👟</em>TIRE-KICKERS<br><small class="cy">no real pain</small></div>
+      <div class="card bad"><em>🚫</em>NO BUDGET<br>AUTHORITY</div>
+      <div class="card bad"><em>🗺️</em>ROADMAP<br>HIJACKERS</div>
+      <div class="card bad"><em>∞</em>FREE PILOT<br>FOREVER</div>
+      <div class="card bad"><em>🏆</em>VANITY<br>LOGOS</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>THE EVALUATION ENGINE</h2>
+    <div class="two">
+      <div class="term">
+        <h3>&gt; CLIENTMATE EVALUATION ENGINE [v1.0]</h3>
+        <ul>
+          <li>Real pain?</li>
+          <li>Budget authority?</li>
+          <li>Will they actually use the product?</li>
+          <li>Can they become revenue + reference?</li>
+          <li>Will they teach us without hijacking the roadmap?</li>
+        </ul>
+      </div>
+      <div class="term result">
+        <h3>PARTNER RESULT</h3>
+        <div class="stars">★★★★☆</div>
+        <ul>
+          <li>REVENUE SIGNAL: <span class="gr">HIGH</span></li>
+          <li>REFERENCE VALUE: <span class="cy">STRONG</span></li>
+          <li>LEARNING VALUE: <span class="gr">HIGH</span></li>
+          <li>ROADMAP RISK: <span class="tag">LOW</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="verdicts">
+      <div class="v a" style="border-color:var(--green)"><b>80–100</b>STRONG FIT</div>
+      <div class="v b" style="border-color:var(--cyan)"><b>60–79</b>WORKABLE</div>
+      <div class="v c" style="border-color:#ffd23f"><b>40–59</b>CAUTION</div>
+      <div class="v d" style="border-color:var(--pink)"><b>0–39</b>WALK AWAY</div>
+    </div>
+  </section>
+
+  <section id="workflow">
+    <h2>THE WORKFLOW</h2>
+    <ol class="steps">
+      <li><code>/cmstrat</code> <span>— define who you should (and shouldn't) sell to</span></li>
+      <li><code>/cmlist</code> <span>— build the tiered target account list</span></li>
+      <li><code>/cmposer &lt;account&gt;</code> <span>— bad-fit check first. Drop if score &lt; 40</span></li>
+      <li><code>/cmmatch</code> + <code>/cmvalue &lt;account&gt;</code> <span>— map the deal, the champion, the real value</span></li>
+      <li><code>/cmdevil</code> <span>— harden your pitch against a skeptical buyer</span></li>
+      <li><code>/cmreach cmmatch-&lt;account&gt;.md</code> <span>— draft outreach to the champion</span></li>
+      <li><code>/cmprep cmmatch-&lt;account&gt;.md</code> <span>— discovery call prep + disqualify triggers</span></li>
+    </ol>
+  </section>
+
+  <section id="commands">
+    <h2>8 COMMANDS</h2>
+    <div class="grid g4">
+      <div class="card"><div class="cmd">/cmstrat</div><p>Beachhead, Ideal Design Partner Profile, ICP, the asks — and the anti-patterns to refuse.</p><span class="out">→ cmstrat.md</span></div>
+      <div class="card"><div class="cmd">/cmlist</div><p>15–25 tiered candidate accounts ranked by pain, buyability, reference value and reachability.</p><span class="out">→ cmlist.md</span></div>
+      <div class="card"><div class="cmd">/cmposer</div><p>The core filter. Eight evidence-based checks, scored 0–100. A dream logo can still be a Walk Away.</p><span class="out">→ cmposer-&lt;account&gt;.md</span></div>
+      <div class="card"><div class="cmd">/cmmatch</div><p>7-dimension fit score, champion map, deal shape and a Pursue / Nurture / Pass verdict.</p><span class="out">→ cmmatch-&lt;account&gt;.md</span></div>
+      <div class="card"><div class="cmd">/cmvalue</div><p>Commercial + strategic value, netted against cost to serve. Your max justified concession.</p><span class="out">→ cmvalue-&lt;account&gt;.md</span></div>
+      <div class="card"><div class="cmd">/cmreach</div><p>Cold email, warm-intro request and LinkedIn DM built on the account's sourced, specific pain.</p><span class="out">→ cmreach-&lt;account&gt;.md</span></div>
+      <div class="card"><div class="cmd">/cmprep</div><p>Timed agenda, qualifying questions, objection handling and the triggers that tell you to walk.</p><span class="out">→ cmprep-&lt;account&gt;.md</span></div>
+      <div class="card"><div class="cmd">/cmdevil</div><p>A burned-before enterprise VP asks the 10 hardest deal-ending questions. Close the gaps.</p><span class="out">→ cmdevil.md</span></div>
+    </div>
+  </section>
+
+  <section id="install">
+    <h2>INSTALL</h2>
+    <p style="margin-bottom:16px">Listed in Anthropic's official Claude plugin directory — Claude Code, Cowork and the Claude apps.</p>
+    <pre><span class="c"># Claude Code</span>
+<span class="p">/plugin</span>            <span class="c"># → Discover → search "ClientMate" → install</span>
+<span class="p">/reload-plugins</span>
+
+<span class="c"># then, in any folder with a STARTUP_PROFILE.md</span>
+<span class="p">/clientmate:cmstrat</span></pre>
+    <p style="margin-top:16px;color:var(--dim);font-size:15px">Sibling of <a href="https://github.com/maxoliverbr/vcupid-plugin">VCupid</a> and Incubae — one shared <span class="cy">STARTUP_PROFILE.md</span> for all three.</p>
+  </section>
+
+  <section>
+    <div class="pillars"><span><i>♥</i> REVENUE</span><span>REFERENCES</span><span>DATA</span><span>LEARNING <i>♥</i></span></div>
+    <p style="text-align:center;margin-top:20px" class="cursor">Find signal. Filter bad fits. Protect your runway. </p>
+  </section>
+
+  <footer>
+    OPEN SOURCE. FOR FOUNDERS. BY FOUNDERS. · MIT © 2026 3FLUX · <a href="https://github.com/maxoliverbr/clientmate-plugin">&lt;/&gt;</a><br>
+    <span style="color:var(--dim);letter-spacing:0">No server. No telemetry. No data collected.</span>
+  </footer>
+</div>
+</div>
+</body>
+</html>
